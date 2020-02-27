@@ -28,5 +28,5 @@ public class WebConfig {
         resolver.setSuffix(".jsp");
         return resolver;
     }
-    
+
 }

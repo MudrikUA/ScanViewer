@@ -6,7 +6,7 @@ body {
 
 #depHead {
     background-color: #5b9bd5;
-    height: 350px;
+    height: 250px;
     width: 700px;
     border-color: gray 1px solid;
 }
@@ -22,15 +22,17 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
     display: table-cell;
+    vertical-align: middle;
 }
 
 #curentPanel {
-    background-color: #cc2127;
+    background-color: #f48139;
     height: 100px;
     width: 65px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
     display: table-cell;
+    vertical-align: middle;
 }
 
 #rightPanel {
@@ -40,6 +42,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
     display: table-cell;
+    vertical-align: middle;
 }
 
 .tdSpace {
@@ -50,49 +53,39 @@ body {
 .panelText {
     background-color: white;
     border: 1px solid black;
-    height: 25px;
+    height: 20px;
     width: 175px;
 }
 
 .currentPanelText {
     background-color: white;
     border: 1px solid black;
-    height: 25px;
+    height: 20px;
     width: 175px;
+}
+
+#infoField {
+    width: 100px;
+    height: 50px;
+    background-color: white;
 }
 
 #laminName {
     width: 100px;
-    height: 25px;
+    height: 20px;
     background-color: white;
     border: 1px solid black;
 }
 
-#bugCount {
-    width: 30px;
-    height: 30px;
+#bugTime {
+    width: 100px;
+    height: 40px;
     background-color: white;
     border: 1px solid black;
 }
 
-#scanCodeCheckArea {
-    margin-top: 50px;
-    margin-left: 25px
-}
-
-#scanCodeCheck {
-    width: 175px;
-    height: 25px;
-    background-color: white;
-    border: 1px solid black;
-}
-
-#scanCodeCheckBtn {
-    height: 30px;
-    width: 125px;
-    text-decoration: none;
+.divTextCenter {
+    display: grid;
+    align-items: center;
     text-align: center;
-    color: white;
-    border-radius: 8px;
-    background: linear-gradient(to top, #b35211, #f4b081);
 }

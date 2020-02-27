@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Начальник зміни (НЗ)</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-page1.css}"/>
+    </head>
+    <body>
+        <div id="depHead">
+            <div id="infoField" class="divTextCenter">
+                <div id="laminName" 
+                     th:utext="${currentPanel?.currentPanel?.laminName}"></div>
+                <div id="bugTime" 
+                     th:utext="${curDate}"></div>
+            </div>
+            <table id="depHeadTable">
+                <tr>
+                    <td class="tdSpace" 
+                        align="center">
+                        <div id="leftPanel">
+                            <h3 th:utext="${leftPanel?.leftPanel?.laminName}"></h3>
+                            <h3 ></h3>
+                        </div>
+                        <div class="panelText"
+                             th:utext="${leftPanel?.leftPanel?.scanCode}"></div>
+                    </td>
+                    <td class="tdSpace" 
+                        align="center">
+                        <div class="panelText"
+                             th:utext="${#dates.format(currentPanel?.currentPanel?.creationDate, 'dd-MM-yyyy HH:mm:ss')}"></div>
+                        <div id="curentPanel">
+                            <h3 th:utext="${currentPanel?.currentPanel?.laminName}"></h3>
+                            <h4>ДЕФ
+                                ЕКТ</h4>
+                        </div>
+                        <div class="currentPanelText"
+                             th:utext="${currentPanel?.currentPanel?.scanCode}"></div>
+                    </td>
+                    <td class="tdSpace" 
+                        align="center">
+                        <div id="rightPanel">
+                            <h3 th:utext="${rightPanel?.rightPanel?.laminName}"></h3>
+                            <h3></h3>
+                        </div>
+                        <div class="panelText" 
+                             th:utext="${rightPanel?.rightPanel?.scanCode}"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
