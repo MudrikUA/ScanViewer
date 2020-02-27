@@ -1,0 +1,98 @@
+body {
+    background: #20262E;
+    padding: 20px;
+    font-family: Helvetica;
+}
+
+#depHead {
+    background-color: #5b9bd5;
+    height: 350px;
+    width: 700px;
+    border-color: gray 1px solid;
+}
+
+#depHeadTable {
+    padding-top: 20px;
+}
+
+#leftPanel {
+    background-color: gray;
+    height: 100px;
+    width: 65px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: table-cell;
+}
+
+#curentPanel {
+    background-color: #cc2127;
+    height: 100px;
+    width: 65px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: table-cell;
+}
+
+#rightPanel {
+    background-color: gray;
+    height: 100px;
+    width: 65px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: table-cell;
+}
+
+.tdSpace {
+    padding-left: 35px;
+    display: table-cell;
+}
+
+.panelText {
+    background-color: white;
+    border: 1px solid black;
+    height: 25px;
+    width: 175px;
+}
+
+.currentPanelText {
+    background-color: white;
+    border: 1px solid black;
+    height: 25px;
+    width: 175px;
+}
+
+#laminName {
+    width: 100px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#bugCount {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#scanCodeCheckArea {
+    margin-top: 50px;
+    margin-left: 25px
+}
+
+#scanCodeCheck {
+    width: 175px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#scanCodeCheckBtn {
+    height: 30px;
+    width: 125px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    background: linear-gradient(to top, #b35211, #f4b081);
+}

@@ -1,0 +1,82 @@
+body {
+    background: #20262E;
+    padding: 20px;
+    font-family: Helvetica;
+}
+
+#depHead {
+    background-color: #5b9bd5;
+    height: 250px;
+    width: 700px;
+    border-color: gray 1px solid;
+}
+
+#depHeadTable {
+    padding-top: 20px;
+}
+
+#leftPanel {
+    background-color: gray;
+    height: 100px;
+    width: 65px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: table-cell;
+}
+
+#curentPanel {
+    background-color: #f48139;
+    height: 100px;
+    width: 65px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: table-cell;
+}
+
+#rightPanel {
+    background-color: gray;
+    height: 100px;
+    width: 65px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: table-cell;
+}
+
+.tdSpace {
+    padding-left: 35px;
+    display: table-cell;
+}
+
+.panelText {
+    background-color: white;
+    border: 1px solid black;
+    height: 25px;
+    width: 175px;
+}
+
+.currentPanelText {
+    background-color: white;
+    border: 1px solid black;
+    height: 25px;
+    width: 175px;
+}
+
+#infoField {
+    width: 100px;
+    height: 50px;
+    background-color: white;
+}
+
+#laminName {
+    width: 100px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#bugTime {
+    width: 100px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid black;
+}
