@@ -3,6 +3,8 @@
         <meta charset="UTF-8">
         <title>Начальник зміни (НЗ)</title>
         <link rel="stylesheet" type="text/css" th:href="@{/css/style-page1.css}"/>
+        <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/page1.js}"></script>
     </head>
     <body>
         <div id="depHead">
@@ -11,13 +13,16 @@
                      th:utext="${currentPanel?.currentPanel?.laminName}"></div>
                 <div id="bugTime" 
                      th:utext="${curDate}"></div>
+                <span id="clock" style="color: white"
+                      th:text="${#dates.format(currentTime, 'HH:mm:ss')}">
+                </span>
             </div>
             <table id="depHeadTable">
                 <tr>
                     <td class="tdSpace" 
                         align="center">
                         <div id="leftPanel">
-                            <h3 th:utext="${leftPanel?.leftPanel?.laminName}"></h3>
+                            <h3 th:utext="|П-${leftPanel?.leftPanel?.panelPosition}|"></h3>
                             <h3 ></h3>
                         </div>
                         <div class="panelText"
@@ -28,7 +33,7 @@
                         <div class="panelText"
                              th:utext="${#dates.format(currentPanel?.currentPanel?.creationDate, 'dd-MM-yyyy HH:mm:ss')}"></div>
                         <div id="curentPanel">
-                            <h3 th:utext="${currentPanel?.currentPanel?.laminName}"></h3>
+                            <h3 th:utext="|П-${currentPanel?.currentPanel?.panelPosition}|"></h3>
                             <h4>ДЕФ
                                 ЕКТ</h4>
                         </div>
@@ -38,7 +43,7 @@
                     <td class="tdSpace" 
                         align="center">
                         <div id="rightPanel">
-                            <h3 th:utext="${rightPanel?.rightPanel?.laminName}"></h3>
+                            <h3 th:utext="|П-${rightPanel?.rightPanel?.panelPosition}|"></h3>
                             <h3></h3>
                         </div>
                         <div class="panelText" 
@@ -47,5 +52,55 @@
                 </tr>
             </table>
         </div>
+        <div th:class="${isExistDupl} ? qwerty : disableDisplay ">
+            <div  th:class="${isNewDupl} ? headerNewDupl : headerOldDupl ">
+                <h1 th:utext="${duplicateText}"></h1>
+            </div>
+            <table border="1"
+                   id="duplScansTbl">
+                <tr>
+                    <th>Дата та час (Дубль)</th>
+                    <th>Номер Ламінатора (Дубль)</th>
+                    <th>Штрих код (Дубль)</th>
+                    <th>Дата та час </th>
+                    <th>Номер Ламінатора</th>
+                    <th>Номер позиції на Ламінаторі</th>
+                    <th></th>
+                </tr>
+                <tr th:each ="ds : ${duplicateScan}">
+                    <td th:utext="${#dates.format(ds?.creationDate, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                    <td th:utext="${ds?.laminName}"></td>
+                    <td th:utext="${ds?.scanCode}"></td>
+                    <td th:utext="${#dates.format(ds?.duplicateScan?.creationDate, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                    <td th:utext="${ds?.duplicateScan?.laminName}"></td>
+                    <td th:utext="${ds?.duplicateScan?.panelPosition}"></td>
+                    <td>
+                        <a th:href="@{'/performCuurentDupl/' + ${ds?.id}}">
+                            <span>Переглянуто</span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="header">
+            <h1>Остані 10 панелей з дефектом</h1>
+        </div>
+        <table border="1"
+               id="bugScansTbl">
+            <tr>
+                <th>Скан код</th>
+                <th>Ламінатор</th>
+                <th>Позиція</th>
+                <th>Дата та час</th>
+            </tr>
+            <tr th:each ="lb : ${lastBug}">
+                <td th:utext="${lb?.currentPanel?.scanCode}"></td>
+                <td th:utext="${lb?.currentPanel?.laminName}"></td>
+                <td th:utext="${lb?.currentPanel?.panelPosition}"></td>
+                <td th:utext="${#dates.format(lb?.creationDate, 'dd-MM-yyyy HH:mm:ss')}"></td>
+            </tr>
+        </table>
+
     </body>
 </html>

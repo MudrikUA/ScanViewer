@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Візуальний контроль</title>
+        <title>«Ідентифікація ламінованих фотогальванічних модулів</title>
         <link rel="stylesheet" type="text/css" th:href="@{/css/style-page2.css}"/>
     </head>
     <body>
@@ -15,14 +15,15 @@
                             <tr>
                                 <td>
                                     <div id="leftPanel">
-                                        <h3>
+                                        <h3 th:utext="|П-${leftPanel?.panelPosition}|" >
                                         </h3>
                                         <h3>
                                         </h3>
                                     </div>
                                 </td>
                                 <td style="vertical-align: baseline;">
-                                    <div id="bugCount">
+                                    <div th:utext="${leftPanel?.bugCount}" 
+                                         id="bugCount">
                                     </div>
                                 </td>
                             </tr>
@@ -37,14 +38,15 @@
                             <tr>
                                 <td>
                                     <div id="curentPanel">
-                                        <h3>
+                                        <h3 th:utext="|П-${currentPanel?.panelPosition}|">
                                         </h3>
                                         <h3>
                                         </h3>
                                     </div>
                                 </td>
                                 <td style="vertical-align: baseline;">
-                                    <div id="bugCount">
+                                    <div id="bugCount" 
+                                         th:utext="${leftPanel?.bugCount}" >
                                     </div>
                                 </td>
                             </tr>
@@ -57,14 +59,17 @@
                             <tr>
                                 <td>
                                     <div id="rightPanel">
-                                        <h3>
+                                        <h3 th:utext="|П-${rightPanel?.panelPosition}|">
                                         </h3>
                                         <h3>
                                         </h3>
                                     </div>
                                 </td>
                                 <td style="vertical-align: baseline;">
-                                    <div id="bugCount"></div>
+                                    <div id="bugCount"
+                                         th:utext="${rightPanel?.bugCount}" >
+                                             
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -77,13 +82,17 @@
                 <table>
                     <tr>
                         <td>
-                            <div id="scanCodeCheck">
+                            <form th:object="${student}" 
+                                  th:action="@{/searchPanel}" 
+                                  method="get">
                                 <input type="text" 
-                                       class="inputTextField"/>     
-                            </div>
-                        </td>
-                        <td>
-                            <button id="scanCodeCheckBtn">Шукати</button>
+                                       name="search" 
+                                       id="search" 
+                                       th:value="${search}"/>
+                                <input type="submit" 
+                                       value="Search" 
+                                       id="scanCodeCheckBtn"/>
+                            </form>
                         </td>
                     </tr>
                 </table>

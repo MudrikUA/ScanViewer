@@ -1,18 +1,19 @@
 body {
     background: #20262E;
-    padding: 20px;
+    padding: 0;
     font-family: Helvetica;
 }
 
 #depHead {
     background-color: #5b9bd5;
     height: 350px;
-    width: 700px;
+    width: 100%;
     border-color: gray 1px solid;
 }
 
 #depHeadTable {
-    padding-top: 20px;
+    padding-top: 50px;
+    width: 100%;
 }
 
 #leftPanel {
@@ -69,6 +70,7 @@ body {
     height: 25px;
     background-color: white;
     border: 1px solid black;
+    position: absolute;
 }
 
 #bugCount {

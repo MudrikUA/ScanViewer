@@ -16,5 +16,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ScanBugRepository extends JpaRepository<ScanBug, Long> {
 
-    List<Scan> findAllByCurrentPanel(Scan currentPanel);
+    List<ScanBug> findAllByCurrentPanel(Scan currentPanel);
+    
+    List<ScanBug> findTop10ByOrderByCreationDateDesc();
+    
+    List<ScanBug> findAllById(Integer id);
+    
 }

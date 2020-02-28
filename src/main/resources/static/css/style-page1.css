@@ -1,18 +1,20 @@
 body {
     background: #20262E;
-    padding: 20px;
+    padding: 0;
     font-family: Helvetica;
 }
 
 #depHead {
     background-color: #5b9bd5;
-    height: 250px;
-    width: 700px;
+    height: 225px;
+    width: 100%;
     border-color: gray 1px solid;
+
 }
 
 #depHeadTable {
-    padding-top: 20px;
+    padding-top: 50px;
+    width: 100%;
 }
 
 #leftPanel {
@@ -61,13 +63,14 @@ body {
     background-color: white;
     border: 1px solid black;
     height: 20px;
-    width: 175px;
+    width: 200px;
 }
 
 #infoField {
     width: 100px;
     height: 50px;
     background-color: white;
+    position: absolute;
 }
 
 #laminName {
@@ -88,4 +91,92 @@ body {
     display: grid;
     align-items: center;
     text-align: center;
+}
+
+#bugScansTbl {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #9ef9a2;
+
+}
+
+#bugScansTbl td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#bugScansTbl tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#bugScansTbl tr:hover {
+    background-color: #ddd;
+}
+
+#bugScansTbl th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.header {
+    padding: 1px;
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    font-size: 11px;
+    margin-top: 10px
+}
+
+.headerNewDupl {
+    padding: 1px;
+    text-align: center;
+    background: Red;
+    color: white;
+    font-size: 11px;
+    margin-top: 10px
+}
+
+.headerOldDupl {
+    padding: 1px;
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    font-size: 11px;
+    margin-top: 10px
+}
+
+#duplScansTbl {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #ffa6a6;
+}
+
+#duplScansTbl td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#duplScansTbl tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#duplScansTbl tr:hover {
+    background-color: #ddd;
+}
+
+#duplScansTbl th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: red;
+    color: white;
+}
+
+.disableDisplay {
+    display:none;
 }
