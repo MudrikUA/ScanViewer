@@ -6,7 +6,7 @@ body {
 
 #depHead {
     background-color: #5b9bd5;
-    height: 350px;
+    height: 325px;
     width: 100%;
     border-color: gray 1px solid;
 }
@@ -54,30 +54,33 @@ body {
 .panelText {
     background-color: white;
     border: 1px solid black;
-    height: 25px;
+    height: 20px;
     width: 175px;
 }
 
 .currentPanelText {
     background-color: white;
     border: 1px solid black;
-    height: 25px;
+    height: 20px;
     width: 175px;
 }
 
 #laminName {
     width: 100px;
-    height: 25px;
+    height: 20px;
     background-color: white;
     border: 1px solid black;
     position: absolute;
+    text-align: center;
 }
 
 #bugCount {
-    width: 30px;
+    width: 40px;
     height: 30px;
     background-color: white;
     border: 1px solid black;
+    text-align: center;
+    font-size: 19pt;
 }
 
 #scanCodeCheckArea {

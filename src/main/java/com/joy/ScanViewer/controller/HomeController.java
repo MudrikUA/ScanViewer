@@ -38,6 +38,9 @@ public class HomeController {
     private ScanDuplicateRepository scanDuplicateRepository;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    private Scan searchedScanPanel;
+    private Scan searchedScanLeftPanel;
+    private Scan searchedScanRighttPanel;
 
     @RequestMapping(value = {"/page1"}, method = RequestMethod.GET)
     public String manager(Model model) {
@@ -49,13 +52,22 @@ public class HomeController {
     private Model setupBugPanel(Model model) {
         List<ScanBug> last10Bugs = bugRepository.findTop10ByOrderByCreationDateDesc();
         if (last10Bugs != null && !last10Bugs.isEmpty()) {
+            ScanBug currentBug = last10Bugs.get(0);
+            Date now = new Date();
+            long minDiff = (now.getTime() - currentBug.getCreationDate().getTime()) / 1000 / 60;
             List<ScanBug> leftPanel = bugRepository.findAllById(last10Bugs.get(0).getId() - 1);
-            List<ScanBug> rightPanel = bugRepository.findAllById(last10Bugs.get(0).getId() - 1);
+            List<ScanBug> rightPanel = bugRepository.findAllById(last10Bugs.get(0).getId() + 1);
             model.addAttribute("leftPanel", !leftPanel.isEmpty() ? leftPanel.get(0) : null);
-            model.addAttribute("currentPanel", last10Bugs.get(0));
+            model.addAttribute("currentPanel", currentBug);
             model.addAttribute("rightPanel", !rightPanel.isEmpty() ? rightPanel.get(0) : null);
             model.addAttribute("curDate", dateFormat.format(last10Bugs.get(0).getCreationDate()));
             model.addAttribute("lastBug", last10Bugs);
+            model.addAttribute("minDiff", "Останій дефект " + minDiff + "хв назад.");
+            if (minDiff < 16) {
+                model.addAttribute("minDiffStyle", "orangeTextStl");
+            } else {
+                model.addAttribute("minDiffStyle", "greenTextStl");
+            }
         }
         return model;
     }
@@ -81,25 +93,36 @@ public class HomeController {
         return "redirect:/page1";
     }
 
-    //?????????
     @RequestMapping(value = {"/page2"}, method = RequestMethod.GET)
     public String searchPanelPage(Model model) {
-//        List<Scan> findAll = scanRepository.findAll();
-//        if (findAll != null && !findAll.isEmpty()) {
-//            model.addAttribute("scan", findAll.get(0));
-//            model.addAttribute("scanCode", "");
-//        }
+        if (searchedScanPanel != null) {
+            model.addAttribute("currentPanel", searchedScanPanel);
+        }
+        if (searchedScanLeftPanel != null) {
+            model.addAttribute("leftPanel", searchedScanLeftPanel);
+        }
+        if (searchedScanRighttPanel != null) {
+            model.addAttribute("rightPanel", searchedScanRighttPanel);
+        }
         return "page2";
     }
 
     @RequestMapping(value = "/searchPanel", method = RequestMethod.GET)
     public String searchPanel(@RequestParam(value = "search", required = false) String code, Model model) {
-
+        searchedScanPanel = null;
+        searchedScanLeftPanel = null;
+        searchedScanRighttPanel = null;
         List<Scan> findAllByScanCode = scanRepository.findAllByScanCode(code);
         if (findAllByScanCode != null && !findAllByScanCode.isEmpty()) {
-            model.addAttribute("currentPanel", findAllByScanCode.get(0));
-            model.addAttribute("leftPanel", findAllByScanCode.get(0));
-            model.addAttribute("rightPanel", findAllByScanCode.get(0));
+            searchedScanPanel = findAllByScanCode.get(0);
+            List<Scan> findedLeftPanelL = scanRepository.findAllById(findAllByScanCode.get(0).getId() - 1);
+            List<Scan> findedRightPanelL = scanRepository.findAllById(findAllByScanCode.get(0).getId() + 1);
+            if (findedLeftPanelL != null && !findedLeftPanelL.isEmpty()) {
+                searchedScanLeftPanel = findedLeftPanelL.get(0);
+            }
+            if (findedRightPanelL != null && !findedRightPanelL.isEmpty()) {
+                searchedScanRighttPanel = findedRightPanelL.get(0);
+            }
         }
         return "redirect:/page2";
     }
@@ -120,5 +143,11 @@ public class HomeController {
     public String liveUpdateDuplTable(Model model) {
         model = setupDuplPanel(model);
         return "page1 :: #duplScansTbl";
+    }
+
+    @RequestMapping(value = "/bugLiveUpdateHeader", method = RequestMethod.GET)
+    public String liveUpdateBugHeader(Model model) {
+        model = setupBugPanel(model);
+        return "page1 :: #depHead";
     }
 }

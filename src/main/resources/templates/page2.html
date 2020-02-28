@@ -3,10 +3,16 @@
         <meta charset="UTF-8">
         <title>«Ідентифікація ламінованих фотогальванічних модулів</title>
         <link rel="stylesheet" type="text/css" th:href="@{/css/style-page2.css}"/>
+        <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/page2.js}"></script>
     </head>
     <body>
+        <span id="clock" style="color: white"
+              th:text="${#dates.format(currentTime, 'HH:mm:ss')}">
+        </span>
         <div id="depHead">
-            <div id="laminName">
+            <div id="laminName"
+                 th:utext="${leftPanel?.laminName}">
             </div>
             <table id="depHeadTable">
                 <tr>
@@ -28,11 +34,15 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="panelText">
+                        <div class="panelText"
+                             th:utext="${leftPanel?.scanCode}">
+
                         </div>
                     </td>
                     <td class="tdSpace" align="center">
-                        <div class="panelText">
+                        <div th:utext="${#dates.format(currentPanel?.creationDate, 'dd-MM-yyyy HH:mm:ss')}" 
+                             class="panelText">
+
                         </div>
                         <table>
                             <tr>
@@ -46,12 +56,14 @@
                                 </td>
                                 <td style="vertical-align: baseline;">
                                     <div id="bugCount" 
-                                         th:utext="${leftPanel?.bugCount}" >
+                                         th:utext="${currentPanel?.bugCount}" >
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        <div class="currentPanelText">
+                        <div class="currentPanelText"
+                             th:utext="${currentPanel?.scanCode}">
+
                         </div>
                     </td>
                     <td class="tdSpace" align="center">
@@ -68,12 +80,14 @@
                                 <td style="vertical-align: baseline;">
                                     <div id="bugCount"
                                          th:utext="${rightPanel?.bugCount}" >
-                                             
+
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        <div class="panelText">
+                        <div class="panelText"
+                             th:utext="${rightPanel?.scanCode}">
+
                         </div>
                     </td>
                 </tr>
@@ -90,7 +104,7 @@
                                        id="search" 
                                        th:value="${search}"/>
                                 <input type="submit" 
-                                       value="Search" 
+                                       value="Шукати" 
                                        id="scanCodeCheckBtn"/>
                             </form>
                         </td>

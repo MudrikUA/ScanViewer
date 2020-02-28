@@ -7,15 +7,15 @@
         <script type="text/javascript" th:src="@{/js/page1.js}"></script>
     </head>
     <body>
+        <span id="clock" style="color: white"
+              th:text="${#dates.format(currentTime, 'HH:mm:ss')}">
+        </span>
         <div id="depHead">
             <div id="infoField" class="divTextCenter">
                 <div id="laminName" 
                      th:utext="${currentPanel?.currentPanel?.laminName}"></div>
                 <div id="bugTime" 
                      th:utext="${curDate}"></div>
-                <span id="clock" style="color: white"
-                      th:text="${#dates.format(currentTime, 'HH:mm:ss')}">
-                </span>
             </div>
             <table id="depHeadTable">
                 <tr>
@@ -51,6 +51,8 @@
                     </td>
                 </tr>
             </table>
+            <h3 th:utext="${minDiff}"
+                th:class="${minDiffStyle}"></h3>
         </div>
         <div th:class="${isExistDupl} ? qwerty : disableDisplay ">
             <div  th:class="${isNewDupl} ? headerNewDupl : headerOldDupl ">

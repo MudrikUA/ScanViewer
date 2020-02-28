@@ -13,10 +13,10 @@ let bugTimer = setInterval(
         }
 , 3000);
 
-let duplTimer = setInterval(
+let bugHeaderTimer = setInterval(
         function updateEventCount() {
-            $.get("duplLiveUpdate", function (fragment) { // get from controller
-                $("#duplScansTbl").replaceWith(fragment); // update snippet of page
+            $.get("bugLiveUpdateHeader", function (fragment) { // get from controller
+                $("#depHead").replaceWith(fragment); // update snippet of page
             });
         }
 , 2000);
@@ -24,7 +24,3 @@ let duplTimer = setInterval(
 function performSelectedDupl() {
     $.post("performCuurentDupl");
 }
-
-clockTimer
-bugTimer
-duplTimer
