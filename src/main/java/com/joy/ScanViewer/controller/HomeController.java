@@ -55,11 +55,11 @@ public class HomeController {
             ScanBug currentBug = last10Bugs.get(0);
             Date now = new Date();
             long minDiff = (now.getTime() - currentBug.getCreationDate().getTime()) / 1000 / 60;
-            List<ScanBug> leftPanel = bugRepository.findAllById(last10Bugs.get(0).getId() - 1);
-            List<ScanBug> rightPanel = bugRepository.findAllById(last10Bugs.get(0).getId() + 1);
-            model.addAttribute("leftPanel", !leftPanel.isEmpty() ? leftPanel.get(0) : null);
+            Scan leftPanel = last10Bugs.get(0).getLeftPanel();
+            Scan rightPanel = last10Bugs.get(0).getRightPanel();
+            model.addAttribute("leftPanel", leftPanel);
             model.addAttribute("currentPanel", currentBug);
-            model.addAttribute("rightPanel", !rightPanel.isEmpty() ? rightPanel.get(0) : null);
+            model.addAttribute("rightPanel", rightPanel);
             model.addAttribute("curDate", dateFormat.format(last10Bugs.get(0).getCreationDate()));
             model.addAttribute("lastBug", last10Bugs);
             model.addAttribute("minDiff", "Останій дефект " + minDiff + "хв назад.");
@@ -76,9 +76,11 @@ public class HomeController {
         List<ScanDuplicate> lastDupl = scanDuplicateRepository.findTop10ByIsNewDuplTrueOrderByCreationDateDesc();
         if (lastDupl != null && !lastDupl.isEmpty()) {
             model.addAttribute("duplicateScan", lastDupl);
-            model.addAttribute("isExistDupl", true);
+            model.addAttribute("isExistDupl", "");
             model.addAttribute("duplicateText", "Виявлено дублювання штрих-кодів!");
             model.addAttribute("isNewDupl", true);
+        } else {
+            model.addAttribute("isExistDupl", "disableDisplay");
         }
         return model;
     }

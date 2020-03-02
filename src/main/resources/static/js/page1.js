@@ -12,7 +12,13 @@ let bugTimer = setInterval(
             });
         }
 , 3000);
-
+let dublTimer = setInterval(
+        function updateEventCount() {
+            $.get("duplLiveUpdate", function (fragment) { // get from controller
+                $("#duplScansTbl").replaceWith(fragment); // update snippet of page
+            });
+        }
+, 3000);
 let bugHeaderTimer = setInterval(
         function updateEventCount() {
             $.get("bugLiveUpdateHeader", function (fragment) { // get from controller

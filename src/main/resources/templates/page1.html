@@ -22,11 +22,11 @@
                     <td class="tdSpace" 
                         align="center">
                         <div id="leftPanel">
-                            <h3 th:utext="|П-${leftPanel?.leftPanel?.panelPosition}|"></h3>
+                            <h3 th:utext="|П-${leftPanel?.panelPosition}|"></h3>
                             <h3 ></h3>
                         </div>
                         <div class="panelText"
-                             th:utext="${leftPanel?.leftPanel?.scanCode}"></div>
+                             th:utext="${leftPanel?.scanCode}"></div>
                     </td>
                     <td class="tdSpace" 
                         align="center">
@@ -43,23 +43,26 @@
                     <td class="tdSpace" 
                         align="center">
                         <div id="rightPanel">
-                            <h3 th:utext="|П-${rightPanel?.rightPanel?.panelPosition}|"></h3>
+                            <h3 th:utext="|П-${rightPanel?.panelPosition}|"></h3>
                             <h3></h3>
                         </div>
                         <div class="panelText" 
-                             th:utext="${rightPanel?.rightPanel?.scanCode}"></div>
+                             th:utext="${rightPanel?.scanCode}"></div>
                     </td>
                 </tr>
             </table>
             <h3 th:utext="${minDiff}"
                 th:class="${minDiffStyle}"></h3>
         </div>
-        <div th:class="${isExistDupl} ? qwerty : disableDisplay ">
-            <div  th:class="${isNewDupl} ? headerNewDupl : headerOldDupl ">
-                <h1 th:utext="${duplicateText}"></h1>
-            </div>
+        <div >
             <table border="1"
-                   id="duplScansTbl">
+                   id="duplScansTbl" 
+                   th:class="${isExistDupl}">
+                <tr>
+                     <th class="headerNewDupl" 
+                         colspan="7" 
+                         th:utext="${duplicateText}"></th>
+                </tr>
                 <tr>
                     <th>Дата та час (Дубль)</th>
                     <th>Номер Ламінатора (Дубль)</th>

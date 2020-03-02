@@ -131,12 +131,10 @@ body {
 }
 
 .headerNewDupl {
-    padding: 1px;
-    text-align: center;
+    text-align: center !important;
     background: Red;
     color: white;
-    font-size: 11px;
-    margin-top: 10px
+    font-size: 16pt;
 }
 
 .headerOldDupl {
@@ -149,6 +147,7 @@ body {
 }
 
 #duplScansTbl {
+    margin-top: 10px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
