@@ -42,6 +42,8 @@ public class HomeController {
     private Scan searchedScanLeftPanel;
     private Scan searchedScanRighttPanel;
 
+    private String searchStr = "";
+
     @RequestMapping(value = {"/page1"}, method = RequestMethod.GET)
     public String manager(Model model) {
         model = setupBugPanel(model);
@@ -97,6 +99,7 @@ public class HomeController {
 
     @RequestMapping(value = {"/page2"}, method = RequestMethod.GET)
     public String searchPanelPage(Model model) {
+        model.addAttribute("search", searchStr);
         if (searchedScanPanel != null) {
             model.addAttribute("currentPanel", searchedScanPanel);
         }
@@ -114,6 +117,7 @@ public class HomeController {
         searchedScanPanel = null;
         searchedScanLeftPanel = null;
         searchedScanRighttPanel = null;
+        searchStr = code;
         List<Scan> findAllByScanCode = scanRepository.findAllByScanCode(code);
         if (findAllByScanCode != null && !findAllByScanCode.isEmpty()) {
             searchedScanPanel = findAllByScanCode.get(0);
